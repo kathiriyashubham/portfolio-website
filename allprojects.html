@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Work</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563EB',
+secondary: '#7C3AED'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+/* Custom Cursor */
+* {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  width: 32px;
+  height: 32px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-image: url('icons8-iron-man (1).svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transition:  ease;
+}
+
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 10px;
+}
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+background: #2563EB;
+border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #1d4ed8;
+}
+/* Loading Screen */
+.loading-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: white;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+.loading-logo {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: #2563EB;
+opacity: 0;
+}
+.gradient-border {
+background: linear-gradient(90deg, #2563EB, #7C3AED);
+height: 2px;
+}
+.frosted {
+backdrop-filter: blur(10px);
+background-color: rgba(255, 255, 255, 0.85);
+}
+.project-card {
+transition: all 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-10px);
+box-shadow: 0 0 9px rgba(62, 23, 255, 0.5);
+}
+.filter-btn.active {
+background: linear-gradient(135deg, #2563EB, #7C3AED);
+color: white;
+}
+.category-tag {
+animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-3px); }
+100% { transform: translateY(0px); }
+}
+</style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div class="loading-screen">
+<div class="loading-logo">Loading...</div>
+</div>
+<div class="custom-cursor"></div>
+<header class="fixed w-full z-50 frosted">
+<div class="container mx-auto px-6">
+<nav class="flex items-center justify-center h-20">
+<div class="space-x-8">
+<a href="home.html" class="text-gray-800 hover:text-[#763ded] hover:font-bold hover:scale-110 transition-all inline-block">Home</a>
+<a href="home.html#about" class="text-gray-800 hover:text-[#763ded] hover:font-bold hover:scale-110 transition-all inline-block">About</a>
+<a href="home.html#skills" class="text-gray-800 hover:text-[#763ded] hover:font-bold hover:scale-110 transition-all inline-block">Skills</a>
+<a href="Portfolio Projects Showcase.html" class="text-gray-800 hover:text-[#763ded] hover:font-bold hover:scale-110 transition-all inline-block">Projects</a>
+<a href="home.html#contact" class="text-gray-800 hover:text-[#763ded] hover:font-bold hover:scale-110 transition-all inline-block">Contact</a>
+</div>
+</nav>
+</div>
+<div class="gradient-border"></div>
+</header>
+<main>
+<section class="relative bg-gradient-to-r from-gray-50 to-white py-20 pt-32">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="lg:flex lg:items-center lg:justify-between">
+<div class="lg:w-1/2">
+<h1 class="text-5xl font-bold text-gray-900 mb-6">Creative Projects Showcase</h1>
+<p class="text-xl text-gray-600 mb-8">Exploring the intersection of design and technology through innovative solutions and meaningful experiences.</p>
+</div>
+<div class="lg:w-1/2 mt-10 lg:mt-0">
+<img src="https://public.readdy.ai/ai/img_res/2e2a8945f5f09a50421132a2733033d0.jpg" class="rounded-lg shadow-xl" alt="Hero Image">
+</div>
+</div>
+</div>
+</section>
+<section class="py-12 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-3xl font-bold text-gray-900">Projects</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/127dc3fa9e305f4b2e1d04eaa1caae70.jpg" class="w-full h-48 object-cover" alt="Project 1">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">E-commerce Mobile App</h3>
+<p class="text-gray-600 mb-4">A modern shopping experience with intuitive navigation and seamless checkout process.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="category-tag bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">React Native</span>
+<span class="category-tag bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Firebase</span>
+<span class="category-tag bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">UI/UX</span>
+</div>
+<a href="Project Detail Page.html" class="text-primary hover:text-secondary transition-colors">View Details</a>
+</div>
+</div>
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/e75549019dece74268b0a39c7477e6d8.jpg" class="w-full h-48 object-cover" alt="Project 2">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Corporate Website Redesign</h3>
+<p class="text-gray-600 mb-4">Complete overhaul of a financial services website focusing on user experience.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="category-tag bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Vue.js</span>
+<span class="category-tag bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">Tailwind</span>
+<span class="category-tag bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">WordPress</span>
+</div>
+<a href="Project Detail Page.html" class="text-primary hover:text-secondary transition-colors">View Details</a>
+</div>
+</div>
+<div class="project-card bg-white rounded-lg shadow-lg overflow-hidden">
+<img src="https://public.readdy.ai/ai/img_res/f08acd60adca86515e41d115f6f0c0f4.jpg" class="w-full h-48 object-cover" alt="Project 3">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Brand Identity System</h3>
+<p class="text-gray-600 mb-4">Comprehensive branding package for a tech startup including logo and guidelines.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="category-tag bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Branding</span>
+<span class="category-tag bg-orange-100 text-orange-800 text-xs px-3 py-1 rounded-full">Illustrator</span>
+<span class="category-tag bg-teal-100 text-teal-800 text-xs px-3 py-1 rounded-full">Design</span>
+</div>
+<a href="Project Detail Page.html" class="text-primary hover:text-secondary transition-colors">View Details</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-gradient-to-r from-primary to-secondary py-20 text-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+<h2 class="text-3xl font-bold mb-8">Let's Create Something Amazing Together</h2>
+<p class="text-xl mb-8 opacity-90">Have a project in mind? I'd love to help bring your vision to life.</p>
+<a href="home.html#contact" class="!rounded-button bg-white text-primary px-8 py-3 font-medium hover:bg-opacity-90 inline-block">Get in Touch</a>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-3 gap-8">
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="home.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+<li><a href="home.html#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+<li><a href="home.html#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li>
+<li><a href="Portfolio Projects Showcase.html" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+<li><a href="home.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Contact</h4>
+<ul class="space-y-2">
+<li class="flex items-center space-x-2">
+<i class="ri-mail-line"></i>
+<span class="text-gray-400">john@example.com</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-phone-line"></i>
+<span class="text-gray-400">+1 (555) 123-4567</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-map-pin-line"></i>
+<span class="text-gray-400">San Francisco, CA</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+<form class="space-y-4">
+<input type="email" placeholder="Your email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary text-white">
+<button type="submit" class="w-full px-4 py-2 bg-primary text-white !rounded-button hover:bg-opacity-90 transition-colors">
+Subscribe
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+© 2025 Shubham Kathiriya. All rights reserved.
+</div>
+</div>
+</footer>
+<script>
+// Loading Screen Animation
+window.addEventListener('load', () => {
+gsap.to('.loading-logo', {
+opacity: 1,
+duration: 1,
+ease: 'power2.out'
+});
+gsap.to('.loading-screen', {
+opacity: 0,
+duration: 0.5,
+delay: 1.5,
+ease: 'power2.inOut',
+onComplete: () => {
+document.querySelector('.loading-screen').style.display = 'none';
+}
+});
+});
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+
+function updateCursor(e) {
+    if (!cursor) return;
+    requestAnimationFrame(() => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%) ${cursor.classList.contains('hover') ? 'scale(1.2)' : ''}`;
+    });
+}
+
+document.addEventListener('mousemove', updateCursor, { passive: true });
+
+const interactiveElements = document.querySelectorAll('a, button, .interactive');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+// Filter Buttons
+document.addEventListener('DOMContentLoaded', function() {
+const filterBtns = document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn => {
+btn.addEventListener('click', function() {
+filterBtns.forEach(b => b.classList.remove('active'));
+this.classList.add('active');
+});
+});
+});
+// Scroll Animations
+gsap.registerPlugin(ScrollTrigger);
+gsap.utils.toArray('.project-card').forEach(card => {
+gsap.from(card, {
+y: 50,
+opacity: 0,
+duration: 1,
+scrollTrigger: {
+trigger: card,
+start: 'top 75%',
+end: 'top 50%',
+toggleActions: 'play none none reverse'
+}
+});
+});
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 0) {
+header.classList.add('shadow-lg');
+} else {
+header.classList.remove('shadow-lg');
+}
+});
+</script>
+</body>
+</html>

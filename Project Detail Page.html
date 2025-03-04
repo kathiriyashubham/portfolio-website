@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Detail - Modern E-commerce Platform</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#2563EB',
+secondary: '#7C3AED'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+/* Custom Cursor */
+* {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  width: 32px;
+  height: 32px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-image: url('icons8-iron-man (1).svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transition: ease;
+}
+
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+}
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+width: 10px;
+}
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+background: #2563EB;
+border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: #1d4ed8;
+}
+/* Loading Screen */
+.loading-screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: white;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+.loading-logo {
+font-family: 'Pacifico', serif;
+font-size: 3rem;
+color: #2563EB;
+opacity: 0;
+}
+.gradient-border {
+background: linear-gradient(90deg, #2563EB, #7C3AED);
+height: 2px;
+}
+.frosted {
+backdrop-filter: blur(10px);
+background-color: rgba(255, 255, 255, 0.85);
+}
+.carousel-container:hover .carousel-nav {
+opacity: 1;
+}
+.carousel-slide {
+backface-visibility: hidden;
+transform-style: preserve-3d;
+}
+.gradient-text {
+background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+-webkit-text-fill-color: transparent;
+}
+.glass-morphism {
+backdrop-filter: blur(16px);
+background: rgba(255, 255, 255, 0.05);
+border: 1px solid rgba(255, 255, 255, 0.1);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+.fade-in {
+animation: fadeIn 0.8s ease-out;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.gallery-item:hover {
+transform: scale(1.05);
+transition: transform 0.3s ease;
+}
+</style>
+</head>
+<body class="bg-white min-h-screen">
+<div class="loading-screen">
+<div class="loading-logo">Loading...</div>
+</div>
+<div class="custom-cursor"></div>
+<header class="fixed w-full z-50 frosted">
+<div class="container mx-auto px-6">
+<nav class="flex items-center justify-center h-20">
+<div class="space-x-8">
+<a href="home.html" class="text-gray-800 hover:text-primary hover:font-bold hover:scale-110 transition-all inline-block">Home</a>
+<a href="home.html#about" class="text-gray-800 hover:text-primary hover:font-bold hover:scale-110 transition-all inline-block">About</a>
+<a href="home.html#skills" class="text-gray-800 hover:text-primary hover:font-bold hover:scale-110 transition-all inline-block">Skills</a>
+<a href="allprojects.html" class="text-gray-800 hover:text-primary hover:font-bold hover:scale-110 transition-all inline-block">Projects</a>
+<a href="home.html#contact" class="text-gray-800 hover:text-primary hover:font-bold hover:scale-110 transition-all inline-block">Contact</a>
+</div>
+</nav>
+</div>
+<div class="gradient-border"></div>
+</header>
+<header class="relative overflow-hidden min-h-[300px] perspective-1000 pt-20">
+<div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-800 nebula-bg"></div>
+<div class="absolute inset-0 geometric-shapes"></div>
+<div class="absolute inset-0 grid-pattern"></div>
+<style>
+.perspective-1000 { perspective: 1000px; }
+.nebula-bg {
+background-image: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.05) 50%, transparent 100%);
+animation: nebula 20s linear infinite;
+}
+.geometric-shapes {
+background:
+radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.1) 0%, transparent 20%),
+radial-gradient(circle at 90% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 20%);
+transform: translateZ(-20px);
+animation: float 15s ease-in-out infinite;
+}
+.grid-pattern {
+background-image:
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+background-size: 20px 20px;
+transform: translateZ(-10px);
+}
+@keyframes nebula {
+0% { background-position: 0% 0%; }
+100% { background-position: 100% 100%; }
+}
+@keyframes float {
+0%, 100% { transform: translateZ(-20px) translate(0, 0); }
+50% { transform: translateZ(-20px) translate(10px, -10px); }
+}
+</style>
+<div class="relative max-w-7xl mx-auto pt-12 pb-6">
+    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 fade-in mb-8 relative">
+    <span class="relative z-10">Modern E-commerce Platform Redesign</span>
+    <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-16 bg-gradient-to-b from-primary to-secondary rounded-full"></div>
+    </h1>
+    <div class="glass-morphism rounded-lg p-6 grid grid-cols-1 md:grid-cols-4 gap-6 fade-in shadow-[0_8px_32px_rgba(87,181,231,0.1)] backdrop-blur-xl bg-white/10">
+    <div class="flex flex-col">
+    <span class="text-sm text-gray-500">Duration</span>
+    <span class="text-gray-900 font-medium">6 months</span>
+    </div>
+    <div class="flex flex-col">
+    <span class="text-sm text-gray-500">Role</span>
+    <span class="text-gray-900 font-medium">Lead UX Designer</span>
+    </div>
+    <div class="flex flex-col">
+    <span class="text-sm text-gray-500">Client</span>
+    <span class="text-gray-900 font-medium">Global Retail Solutions</span>
+    </div>
+    <div class="flex items-center space-x-4">
+    <a href="#" class="flex items-center space-x-2 px-4 py-2 border border-gray-200 !rounded-button hover:bg-violet-100 transition-colors">
+    <i class="ri-github-line"></i>
+    <span>Repository</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-16">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2">
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-6">Project Overview</h2>
+<p class="text-gray-700 leading-relaxed mb-4">
+A comprehensive redesign of an enterprise e-commerce platform serving over 2 million customers worldwide. The project focused on improving user experience, modernizing the interface, and implementing new features to drive conversion rates.
+</p>
+<blockquote class="border-l-4 border-primary pl-4 my-6 text-gray-700 italic">
+"The new platform has increased our conversion rate by 45% and reduced customer support tickets by 60% within the first three months of launch."
+</blockquote>
+</section>
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-6">Key Features</h2>
+<div class="space-y-8">
+<div class="fade-in">
+<h3 class="text-xl font-semibold mb-4">Intelligent Search & Filtering</h3>
+<p class="text-gray-700 leading-relaxed">
+Implemented an AI-powered search system with dynamic filters and real-time suggestions, reducing average search time by 35%.
+</p>
+</div>
+<div class="fade-in">
+<h3 class="text-xl font-semibold mb-4">Personalized Shopping Experience</h3>
+<p class="text-gray-700 leading-relaxed">
+Created a recommendation engine using machine learning algorithms to provide tailored product suggestions based on user behavior and preferences.
+</p>
+</div>
+<div class="fade-in">
+<h3 class="text-xl font-semibold mb-4">Streamlined Checkout Process</h3>
+<p class="text-gray-700 leading-relaxed">
+Redesigned the checkout flow to reduce steps and friction points, resulting in a 25% decrease in cart abandonment rate.
+</p>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-1">
+<div class="glass-morphism rounded-lg p-6 sticky top-6 bg-white shadow-lg">
+<h3 class="text-xl font-bold mb-6">Technical Details</h3>
+<div class="mb-8">
+<h4 class="text-sm font-semibold text-gray-500 mb-3">Technology Stack</h4>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm">React.js</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Node.js</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm">GraphQL</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm">PostgreSQL</span>
+<span class="px-3 py-1 bg-gray-100 rounded-full text-sm">AWS</span>
+</div>
+</div>
+<div class="mb-8">
+<h4 class="text-sm font-semibold text-gray-500 mb-3">Project Challenges</h4>
+<ul class="space-y-3 text-gray-700">
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-2"></i>
+<span>Migrating legacy data without service interruption</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-2"></i>
+<span>Implementing real-time inventory management</span>
+</li>
+<li class="flex items-start">
+<i class="ri-check-line text-primary mt-1 mr-2"></i>
+<span>Optimizing performance for high traffic loads</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-gray-500 mb-3">Timeline</h4>
+<div class="space-y-4">
+<div class="flex items-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+<div class="ml-3">
+<div class="text-sm font-medium">Project Kickoff</div>
+<div class="text-xs text-gray-500">September 2024</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 bg-secondary rounded-full"></div>
+<div class="ml-3">
+<div class="text-sm font-medium">Beta Launch</div>
+<div class="text-xs text-gray-500">December 2024</div>
+</div>
+</div>
+<div class="flex items-center">
+<div class="w-2 h-2 bg-green-500 rounded-full"></div>
+<div class="ml-3">
+<div class="text-sm font-medium">Full Release</div>
+<div class="text-xs text-gray-500">March 2025</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="mt-16 mb-16 relative overflow-hidden">
+<h2 class="text-2xl font-bold mb-8">Project Photos</h2>
+<div class="carousel-container relative w-full aspect-[21/9] perspective-1000">
+<div class="carousel-wrapper flex transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]" style="transform: translateX(0%);">
+<div class="carousel-slide w-full flex-shrink-0 relative transform-gpu transition-all duration-500" style="transform: translateZ(20px) rotateY(0deg);">
+<img src="https://public.readdy.ai/ai/img_res/5138e0e34f948bc1db13da9449f2f99e.jpg" class="w-full h-full object-cover" alt="Dashboard Interface">
+<div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent">
+<h3 class="text-white text-2xl font-bold mb-2">Dashboard Interface</h3>
+<p class="text-white/80">Comprehensive analytics and reporting dashboard with real-time data visualization</p>
+</div>
+</div>
+<div class="carousel-slide w-full flex-shrink-0 relative transform-gpu transition-all duration-500" style="transform: translateZ(0) rotateY(2deg);">
+<img src="https://public.readdy.ai/ai/img_res/38e96d6f50b5d01154d60cf90048778f.jpg" class="w-full h-full object-cover blur-[2px]" alt="Inventory Management">
+<div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+</div>
+<div class="carousel-slide w-full flex-shrink-0 relative transform-gpu transition-all duration-500" style="transform: translateZ(0) rotateY(2deg);">
+<img src="https://public.readdy.ai/ai/img_res/228f84feeecd3c888cafa46a9781091e.jpg" class="w-full h-full object-cover blur-[2px]" alt="Admin Panel">
+<div class="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20"></div>
+</div>
+</div>
+<div class="absolute inset-x-0 bottom-4 flex justify-center gap-2 z-10">
+<button class="w-2 h-2 rounded-full bg-white opacity-100 transition-opacity duration-300" data-index="0"></button>
+<button class="w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-75 transition-opacity duration-300" data-index="1"></button>
+<button class="w-2 h-2 rounded-full bg-white opacity-50 hover:opacity-75 transition-opacity duration-300" data-index="2"></button>
+</div>
+<button class="carousel-nav prev absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-morphism opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center group">
+<i class="ri-arrow-left-line text-white text-xl group-hover:scale-110 transition-transform"></i>
+</button>
+<button class="carousel-nav next absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass-morphism opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center group">
+<i class="ri-arrow-right-line text-white text-xl group-hover:scale-110 transition-transform"></i>
+</button>
+</div>
+</section>
+<section class="mt-16">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-2xl font-bold">Project Gallery</h2>
+<a href="allprojects.html" class="text-primary hover:text-primary/80 transition-colors flex items-center gap-1 border-none">
+View all
+<i class="ri-arrow-right-line"></i>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+<img src="https://public.readdy.ai/ai/img_res/70f0ccd82da601d19813fc74d6ca754d.jpg" alt="Homepage Design" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="font-semibold">Homepage Design</h3>
+<p class="text-sm text-gray-600">Main landing page with featured products</p>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+<img src="https://public.readdy.ai/ai/img_res/e58717bc8761398b92858e4cbd8efdc6.jpg" alt="Product Detail" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="font-semibold">Product Detail</h3>
+<p class="text-sm text-gray-600">Enhanced product visualization</p>
+</div>
+</div>
+<div class="gallery-item rounded-lg overflow-hidden shadow-lg">
+<img src="https://public.readdy.ai/ai/img_res/231f422e7b2597d22a4ba653d13b6071.jpg" alt="Checkout Flow" class="w-full h-64 object-cover">
+<div class="p-4">
+<h3 class="font-semibold">Checkout Flow</h3>
+<p class="text-sm text-gray-600">Streamlined purchase process</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-900 text-white py-12">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-3 gap-8">
+<div>
+<h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="home.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+<li><a href="home.html#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+<li><a href="home.html#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a></li>
+<li><a href="allprojects.html" class="text-gray-400 hover:text-white transition-colors">Projects</a></li>
+<li><a href="home.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Contact</h4>
+<ul class="space-y-2">
+<li class="flex items-center space-x-2">
+<i class="ri-mail-line"></i>
+<span class="text-gray-400">john@example.com</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-phone-line"></i>
+<span class="text-gray-400">+1 (555) 123-4567</span>
+</li>
+<li class="flex items-center space-x-2">
+<i class="ri-map-pin-line"></i>
+<span class="text-gray-400">San Francisco, CA</span>
+</li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+<form class="space-y-4">
+<input type="email" placeholder="Your email" class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-primary text-white">
+<button type="submit" class="w-full px-4 py-2 bg-primary text-white !rounded-button hover:bg-opacity-90 transition-colors">
+Subscribe
+</button>
+</form>
+</div>
+</div>
+<div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+© 2025 Shubham Kathiriya. All rights reserved.
+</div>
+</div>
+</footer>
+<script>
+// Loading Screen Animation
+window.addEventListener('load', () => {
+gsap.to('.loading-logo', {
+opacity: 1,
+duration: 1,
+ease: 'power2.out'
+});
+gsap.to('.loading-screen', {
+opacity: 0,
+duration: 0.5,
+delay: 1.5,
+ease: 'power2.inOut',
+onComplete: () => {
+document.querySelector('.loading-screen').style.display = 'none';
+}
+});
+});
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+
+function updateCursor(e) {
+    if (!cursor) return;
+    requestAnimationFrame(() => {
+        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%) ${cursor.classList.contains('hover') ? 'scale(1.2)' : ''}`;
+    });
+}
+
+document.addEventListener('mousemove', updateCursor, { passive: true });
+
+const interactiveElements = document.querySelectorAll('a, button, .interactive');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+document.addEventListener('DOMContentLoaded', function() {
+const carousel = document.querySelector('.carousel-wrapper');
+const slides = document.querySelectorAll('.carousel-slide');
+const dots = document.querySelectorAll('[data-index]');
+const prevBtn = document.querySelector('.carousel-nav.prev');
+const nextBtn = document.querySelector('.carousel-nav.next');
+let currentIndex = 0;
+let isTransitioning = false;
+function updateCarousel(newIndex) {
+if (isTransitioning) return;
+isTransitioning = true;
+const offset = -newIndex * 100;
+carousel.style.transform = `translateX(${offset}%)`;
+slides.forEach((slide, index) => {
+if (index === newIndex) {
+slide.style.transform = 'translateZ(20px) rotateY(0deg)';
+slide.querySelector('img').classList.remove('blur-[2px]');
+} else {
+slide.style.transform = `translateZ(0) rotateY(${index < newIndex ? -2 : 2}deg)`;
+slide.querySelector('img').classList.add('blur-[2px]');
+}
+});
+dots.forEach((dot, index) => {
+dot.style.opacity = index === newIndex ? '1' : '0.5';
+});
+currentIndex = newIndex;
+setTimeout(() => {
+isTransitioning = false;
+}, 500);
+}
+prevBtn.addEventListener('click', () => {
+const newIndex = (currentIndex - 1 + slides.length) % slides.length;
+updateCarousel(newIndex);
+});
+nextBtn.addEventListener('click', () => {
+const newIndex = (currentIndex + 1) % slides.length;
+updateCarousel(newIndex);
+});
+dots.forEach((dot, index) => {
+dot.addEventListener('click', () => {
+updateCarousel(index);
+});
+});
+const container = document.querySelector('.carousel-container');
+container.addEventListener('mouseenter', () => {
+document.querySelectorAll('.carousel-nav').forEach(nav => {
+nav.style.opacity = '1';
+});
+});
+container.addEventListener('mouseleave', () => {
+document.querySelectorAll('.carousel-nav').forEach(nav => {
+nav.style.opacity = '0';
+});
+});
+let autoplayInterval = setInterval(() => {
+const newIndex = (currentIndex + 1) % slides.length;
+updateCarousel(newIndex);
+}, 5000);
+container.addEventListener('mouseenter', () => {
+clearInterval(autoplayInterval);
+});
+container.addEventListener('mouseleave', () => {
+autoplayInterval = setInterval(() => {
+const newIndex = (currentIndex + 1) % slides.length;
+updateCarousel(newIndex);
+}, 5000);
+});
+// Mouse parallax effect for grid pattern
+document.addEventListener('mousemove', (e) => {
+const mouseX = e.clientX / window.innerWidth - 0.5;
+const mouseY = e.clientY / window.innerHeight - 0.5;
+const gridPattern = document.querySelector('.grid-pattern');
+const shapes = document.querySelector('.geometric-shapes');
+if (gridPattern && shapes) {
+gridPattern.style.transform = `translateZ(-10px) translate(${mouseX * 20}px, ${mouseY * 20}px)`;
+shapes.style.transform = `translateZ(-20px) translate(${mouseX * 40}px, ${mouseY * 40}px)`;
+}
+});
+// Add hover effect to navigation links
+document.querySelectorAll('.nav-link').forEach(link => {
+link.addEventListener('mouseenter', (e) => {
+const bounds = link.getBoundingClientRect();
+const x = e.clientX - bounds.left;
+const y = e.clientY - bounds.top;
+link.style.setProperty('--mouse-x', `${x}px`);
+link.style.setProperty('--mouse-y', `${y}px`);
+});
+});
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = '1';
+entry.target.style.transform = 'translateY(0)';
+}
+});
+});
+fadeElements.forEach(element => {
+element.style.opacity = '0';
+element.style.transform = 'translateY(20px)';
+element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+observer.observe(element);
+});
+});
+// Scroll Animations
+gsap.registerPlugin(ScrollTrigger);
+const header = document.querySelector('header');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 0) {
+header.classList.add('shadow-lg');
+} else {
+header.classList.remove('shadow-lg');
+}
+});
+</script>
+</body>
+</html>
